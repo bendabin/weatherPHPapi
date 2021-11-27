@@ -21,7 +21,7 @@
             }
 
             $this->apiKey = $apiKey; 
-            // echo $this->apiKey;
+            echo "I love them ooos";
 
         }
         
