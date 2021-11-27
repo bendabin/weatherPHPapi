@@ -21,7 +21,6 @@
             }
 
             $this->apiKey = $apiKey; 
-            echo "I love them ooos";
 
         }
         
