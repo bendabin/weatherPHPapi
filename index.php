@@ -40,7 +40,7 @@
 
                         <div class="weather-controls">
 
-                            <form class="d-flex" action="apiweather.php" method="POST">
+                            <!-- <form class="d-flex" action="apiweather.php" method="POST">
                                 <input class="form-control" type="text" name="name" placeholder="Enter city name *">
 
                                 <input type="radio" name="options" id="weatherOption1" value="metric" />
@@ -50,7 +50,7 @@
                                 <label for="weatherOption2">Fahrenheit</label>
     
                                 <button class="btn btn-dark" type="submit">Search</button>
-                            </form>
+                            </form> -->
 
                             <!-- Adding the radio buttons to the Navbar -->
                             <!-- <div class="form-check form-check-inline">
