@@ -22,6 +22,7 @@
 
             $this->apiKey = $apiKey; 
             // echo $this->apiKey;
+            $t = "hello";
         }
         
         /*
