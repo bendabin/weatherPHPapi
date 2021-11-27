@@ -40,6 +40,14 @@
 
                         <div class="weather-controls">
 
+                            <form method="post" onsubmit="return sendData();">
+                                <input type="text" name="name" id="name">
+                                <input type="text" name="age" id="age">
+                                <button class="btn btn-dark" type="submit">Search</button>                                               
+                            </form>
+
+                            
+
                             <!-- <form class="d-flex" action="apiweather.php" method="POST">
                                 <input class="form-control" type="text" name="name" placeholder="Enter city name *">
 
@@ -77,6 +85,8 @@
     <div class="fluid-container" id="weather-div">
 
         <!-- Current Weather forecast -->
+
+        <div id= "res"></div>
 
         <h2>Current</h2>
 
