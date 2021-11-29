@@ -39,8 +39,11 @@ $(document).ready(function(){
 
                 //Change the elements on the html page 
                 $('.city-name').html(currentWeather.name);  
-                $('.weather-img').html('"<img src=" + weatherIconUrl + ">"');               
-                $('.current-temp').html(currentWeather.main.temp);
+
+                // $("#iconUrl").html(weatherIconUrl).src;
+                document.getElementById('iconUrlId').src= weatherIconUrl;
+
+                $('.current-temp').html(currentWeather.main.temp + " °C");
                 $('.weather-type').html(currentWeather.weather[0].description);
                 $('.cloud-cover').html(currentWeather.clouds.all);
                 $('.humidity').html(currentWeather.main.humidity);

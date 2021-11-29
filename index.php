@@ -81,9 +81,9 @@
         <div class="current-box row">
 
             <div class="forecast-box col">
-                <h2 class="city-name">City Name (Country) </h2>            
-                <img class="weather-img"> 
-                <h3 class="current-temp">20 degrees C</h3>           
+                <h2 class="city-name">City Name (Country) </h2> 
+                <h3 class="current-temp">20 degrees </h3>  
+                <img id="iconUrlId" scr="" >                         
                 <p class="weather-type">Clear</p>
                 <p class="cloud-cover">Clouds:10%</p>
                 <p class="humidity">Humidity: 20%</p>
