@@ -40,16 +40,16 @@
 
                         <div class="weather-controls">
 
-                            <form class="d-flex" action="apiweather.php" method="POST">
-                                <input class="form-control" type="text" name="name" placeholder="Enter city name *">
+                            <form class="d-flex" method="post">
+                                <input class="form-control" type="text" name="cityName" id="cityName" placeholder="Enter city name *">
 
-                                <input type="radio" name="options" id="weatherOption1" value="metric" />
-                                <label for="weatherOption1">Celsius</label>
+                                <input type="radio" name="units" id="metric" value="metric" checked/>
+                                <label for="metric">Celsius</label>
 
-                                <input type="radio" name="options" id="weatherOption2" value="imperial" />
-                                <label for="weatherOption2">Fahrenheit</label>
+                                <input type="radio" name="units" id="imperial" value="imperial" />
+                                <label for="imperial">Fahrenheit</label>
     
-                                <button class="btn btn-dark" type="submit">Search</button>
+                                <button class="btn btn-dark" type="submit" id="submit_btn">Search</button>
                             </form>
 
                             <!-- Adding the radio buttons to the Navbar -->
@@ -71,8 +71,6 @@
         </div>
     </nav>
 
-
-
     <!-- Weather Content -->    
     <div class="fluid-container" id="weather-div">
 
@@ -83,9 +81,9 @@
         <div class="current-box row">
 
             <div class="forecast-box col">
-                <h2>City Name (Country) </h2>            
-                <img class="weather-img" src="" alt="current-weather-img"> 
-                <h3>20 degrees C</h3>           
+                <h2 class="city-name">City Name (Country) </h2>            
+                <img class="weather-img"> 
+                <h3 class="current-temp">20 degrees C</h3>           
                 <p class="weather-type">Clear</p>
                 <p class="cloud-cover">Clouds:10%</p>
                 <p class="humidity">Humidity: 20%</p>
