@@ -1,3 +1,11 @@
+/*
+    The following JavaScript file performs an Ajax on the PHP script, this allows for asynchronous communication between the browser on
+    the client side and the PHP script on the server side, without the need of the user being redirected to a different page after 
+    the search request has been submitted. The following script retrieves the values from the browser such as the "city name", 
+    "units", etc and then POSTS them to the PHP script. If the user receives a successful response a function from the Ajax will be
+    called and the data will be decoded and then displayed back to the user's browser as useful data. 
+*/
+
 $(document).ready(function(){
 
     /*
@@ -13,7 +21,7 @@ $(document).ready(function(){
         var cityName = document.getElementById("cityName").value;
         var units = document.querySelector('input[name="units"]:checked').value;
 
-
+        //The AJAX
         $.ajax({
 
             type: "post",
@@ -42,7 +50,6 @@ $(document).ready(function(){
 
                 // $("#iconUrl").html(weatherIconUrl).src;
                 document.getElementById('iconUrlId').src= weatherIconUrl;
-
                 $('.current-temp').html(currentWeather.main.temp + " °C");
                 $('.weather-type').html(currentWeather.weather[0].description);
                 $('.cloud-cover').html(currentWeather.clouds.all);

@@ -1,11 +1,16 @@
 <?php
+/*
+    The following PHP script communicates with the openweathermap.org API server. It receives a POST request from the 
+    user's browser and then sends the request to the site's API. The script receives the response from the API as a JSON 
+    object which is sent to the user's browser.
+*/
 
     class WeatherApi
     {
         //Global variables 
         const url = "https://api.openweathermap.org/data/2.5/";
         public $apiKey;
-        public $data;
+        // public $data;
 
         /*
         *   Sets the API key 
@@ -38,7 +43,7 @@
                 throw new Exception('The inputs have no attributes!');
             }
 
-            //return JSON dat
+            //return JSON data
             return $this->getAPIdata($apiURL);
         }
 
@@ -50,7 +55,6 @@
         */
         private function getAPIdata($url)
         {
-
             //setting up the API call using curl
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_TIMEOUT, 3);
@@ -81,54 +85,46 @@
             }
             return $data;
         }
-
-        /*
-
-        *   Extract the individual values from the API data response 
-        */
-
-        // public function readCurrentData()
-        // {
-        //     $data = json_decode($this->data, true);
-        //     $temp = $data["main"]["temp"];
-        //     return $temp;
-        // }
     }
 
-    /*
-
-    *  The program starts here 
-
+    /*#########################################################
+      #                 The program starts here               #
+      #########################################################
     */    
 
+    //Wait for the POST request to be received from the user's web browser (City Name search box) 
     if (isset($_POST['cityName'])) {
-
-        //Store the JSON data for the current weather and forecast
-        
-        //Get the values from the user via AJAX POST
+      
+        //Get the values from the web browser form data POST request and generate a parameter array 
         $cityName = $_POST['cityName']; 
         $units = $_POST['units'];
         $parameters = ["q" => $cityName, "units" => $units]; //parameters from input form
 
-        //Get the current weather data from the API
+        /* Using the form data an API call will be developed in the form of a URL, which will send a request to the 
+           API server to receive the data. 2 API calls will be created in the form of class of objects, One object being the
+           current weather data and the other being the forecast.         
+        */
         try {          
 
-            //Generate api calls for the current weather and forecast
+            //Create a new weather app object and initalise it with the API key
             $app = new WeatherApi("b173832c1411fa6ef53b66016aa8fee4");
 
-            //Get current weather data from api
+            //Generate 2 app calls and get the JSON data from the server. 
             $currentWeather = $app->apiCall("weather", $parameters);
-            
-            //Get forecast data from the api
             $forecastWeather = $app->apiCall("forecast", $parameters);
 
             //send the current and forecast data to AJAX 
             $weatherData = array("weather" => $currentWeather, "forecast" => $forecastWeather);
             
-            // echo strip_tags($currentWeather); 
+            //
             echo json_encode($weatherData); 
     
         } catch (Exception $e) {
+            //If the API data is invalid and an exception is thrown the following code will be executed back to the user
+            
+            /*
+                This part of the code is still in development need to implement a new feature. 
+            */
             echo $e->getMessage();
         }
     }
