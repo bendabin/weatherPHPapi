@@ -84,9 +84,14 @@
         <div class="row">
 
             <div class="forecast-box col">
-
-                <h3>Monday</h3>
-
+                <h3 class= "day1">Monday</h3>
+                <h3 class="temp1"> 20 degrees </h3>
+                <img id="iconUrlId1" scr="">
+                <p class="weather1"> Clear</p>
+                <p class="cloud1"> Clouds:10%</p>
+                <p class="humidity1"> Humidity: 20%</p>
+                <p class="precipitation1"> Precipitation: 10%</p>
+                <p class="windspeed1"> Wind Speed: 10 km/hr</p>
             </div>
 
             <div class="forecast-box col-xl-2">

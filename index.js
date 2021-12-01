@@ -45,9 +45,8 @@ $(document).ready(function(){
                 var weatherIcon = currentWeather.weather[0].icon;                
                 var weatherIconUrl = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
 
-                //Change the elements on the html page 
-                $('.city-name').html(currentWeather.name);  
-
+                //Change the current forecast main div 
+                $('.city-name').html(currentWeather.name); 
                 // $("#iconUrl").html(weatherIconUrl).src;
                 document.getElementById('iconUrlId').src= weatherIconUrl;
                 $('.current-temp').html(currentWeather.main.temp + " °C");
@@ -55,7 +54,59 @@ $(document).ready(function(){
                 $('.cloud-cover').html(currentWeather.clouds.all);
                 $('.humidity').html(currentWeather.main.humidity);
                 $('.wind-speed').html(currentWeather.wind.speed);
-                                          
+
+                //Change the 5 day forecast, The data contains a total of 40 samples, sample the data every 24 hours so 8 intervals
+                
+                //converting to user friendly data 
+                const unixTimestamp = forecast.list[0].dt;
+                const unixTimestampMS = unixTimestamp * 1000;
+                // const dateObject = new Date(unixTimestampMS);
+
+                displayValue(unixTimestampMS);
+
+
+
+                // Calculation functions 
+                function displayValue(time){
+
+                    const dateObject = new Date(unixTimestampMS);
+                    console.log(dateObject.toLocaleString("us-en", {weekday: "long"}));
+
+                }
+
+
+                // var format = {
+                //     day: "numeric",
+                //     month: "2-digit",
+                //     year: "numeric"
+
+                // };
+
+                // console.log(dateObject.toLocaleString("ja", format));
+
+
+
+
+                // console.log(dateObject.toLocaleString("us-en", {weekday: "long"}));
+                
+                
+                
+                // console.log((forecast.list[0].dt)).toUTCString();   //Get the timestamps for the forecast 
+                // console.log((forecast.list[8].dt)).toUTCString();
+                // console.log((forecast.list[16].dt).toUTCString());
+                // console.log((forecast.list[24].dt).toUTCString());
+                // console.log((forecast.list[32].dt).toUTCString()); 
+                // console.log((forecast.list[39].dt).toUTCString()); 
+
+
+
+                //
+                //Get 
+                // list[0].dt
+                // list[1].dt
+                // list[7].dt
+                // list[8].dt
+                // list[39].dt                                          
             
                 // var data1 = JSON.parse(response);
                 
@@ -98,4 +149,7 @@ $(document).ready(function(){
         });
 
     });
+
+
 });
+
