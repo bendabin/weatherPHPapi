@@ -55,22 +55,39 @@ $(document).ready(function(){
                 $('.humidity').html(currentWeather.main.humidity);
                 $('.wind-speed').html(currentWeather.wind.speed);
 
-                //Change the 5 day forecast, The data contains a total of 40 samples, sample the data every 24 hours so 8 intervals
-                
-                //converting to user friendly data 
-                const unixTimestamp = forecast.list[0].dt;
-                const unixTimestampMS = unixTimestamp * 1000;
-                // const dateObject = new Date(unixTimestampMS);
-
-                displayValue(unixTimestampMS);
+                //Change the 5 day forecast, The data contains a total of 40 samples, sample the data every 24 hours so 8 intervals      
+                displayDataOnBrowser(forecast);
 
 
+                // // Display the forecast values to the form 
+                function displayDataOnBrowser(forecastData){
 
-                // Calculation functions 
-                function displayValue(time){
+                    //Sample step
+                    sampleStep = 0;    //Gets a data sample every 8 steps (5 times). 
 
-                    const dateObject = new Date(unixTimestampMS);
-                    console.log(dateObject.toLocaleString("us-en", {weekday: "long"}));
+                    for (let index = 0; index <forecastData.cnt; index++){
+
+                        //Check if the last index has been reached cnt - 1 
+                        if(index === sampleStep || index === forecastData.cnt - 1){
+
+                            //increment the sample step by 8
+                            sampleStep+=8; 
+
+                            //Calculate the unixTimestamp
+                            const unixTimestamp = forecast.list[index].dt;
+                            const unixTimestampMS = unixTimestamp * 1000;
+                            const dateObject = new Date(unixTimestampMS);
+
+                            //display the date of the sampled data  
+                            console.log(dateObject.toLocaleString("us-en", {weekday: "long"}));
+                        }
+                    }
+
+                    
+
+                    // const dateObject = new Date(unixTimestampMS);
+
+
 
                 }
 
